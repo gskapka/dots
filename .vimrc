@@ -1,5 +1,37 @@
 filetype off
 
+" Use `//` to search for visual mode highlighted text!
+vnoremap // y/<C-R>"<CR>
+
+" Auto strip trailing whitepsace from given filetypes!
+autocmd BufWritePre *.js %s/\s\+$//e
+autocmd BufWritePre *.sol %s/\s\+$//e
+
+" Set a column width indicator
+:set colorcolumn=80
+:highlight ColorColumn ctermbg=magenta guibg=magenta
+
+" Highlight line the cursor is one
+set cursorline
+
+" Buffer will scroll withing 5 lines of top || bottom of screen
+set scrolloff=5
+
+" Have searches end up in centre of screen
+:nnoremap n nzz
+:nnoremap N Nzz
+:nnoremap * *zz
+:nnoremap # #zz
+:nnoremap g* g*zz
+:nnoremap g# g#zz
+
+" Set relative line numbers on
+set number relativenumber
+
+" Map jk to escape & save if buffer has changed!
+inoremap jk <Esc>:update<CR>
+inoremap kj <Esc>:update<CR>
+
 " Map ctrl-[ to escape insert mode AND save - the following four mappings are
 " to fix the now broken arrow keys! :P
 imap <C-[> <Esc>:update<CR>
@@ -7,6 +39,16 @@ imap <Esc>oA <Esc>ki
 imap <Esc>oB <Esc>ji
 imap <Esc>oC <Esc>li
 imap <Esc>oD <Esc>hi
+
+" Disable arrow keys in Normal & Insert modes
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " Map enter to G so we can go to lines quickly
 :nnoremap <CR> G
