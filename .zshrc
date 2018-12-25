@@ -1,20 +1,28 @@
 # Aliases
 alias rr="ranger"
-alias zshrc="vim ~/.zshrc && source ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 alias tmuxconf="vim ~/.tmux.conf" # then in tmux command line (ctrl-a :) source-file ~/.tmux.conf"
+alias nt="vim ~/Desktop/notes.txt"
+alias cs="vim ~/Desktop/cheat-sheet.txt"
+alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 
 # Git aliases
+logLine="git log --graph --pretty=format:'%C(#ff69b4)%h%Creset %C(yellow)%d%Creset %s %C(#66cdaa) (%an: %cr)'"
+alias gl=$logLine
 alias gd="git diff"
 alias gs="git status"
 alias gb="git branch"
-alias gc="git commit"
+alias glp="$logLine -p"
 alias ga="git add --all"
-alias gl="git log --oneline"
-
-# TEMPORARY aliases!
-#alias nuc="ssh -i ~/.ssh/nuc-lubuntu greg@13.80.245.96 -p 2222"
-#alias sgx-docker="sudo docker run -v ~/oraclize/sgx/rust-sgx-sdk:/root/sgx -ti baiduxlab/sgx-rust"
-#alias upkey="scp -P 2222 -i ~/.ssh/nuc-lubuntu ~/oraclize/sgx/rust-sgx-sdk/samplecode/secp256k1-enclave-rust/bin/enclave.signed.so greg@13.80.245.96:/home/greg/t && scp -P 2222 -i ~/.ssh/nuc-lubuntu ~/oraclize/sgx/rust-sgx-sdk/samplecode/secp256k1-enclave-rust/bin/ethkey_sgx greg@13.80.245.96:/home/greg/t"
+alias gc="git commit -m"
+alias gp="git stash pop"
+alias gr="git rebase -i"
+alias gsl="git stash list"
+alias gcs="git commit -S -m"
+alias gst="git stash save -u"
+alias gca="git commit --amend"
+alias gls="$logLine --show-signature"
+alias glsp="$logLine --show-signature -p"
 
 # Colourise grep output
 alias grep='grep --color=auto'
@@ -38,10 +46,13 @@ export EDITOR=vim
 source ~/.nvm/nvm.sh
 
 # Set keyboard to UK
-setxkbmap gb
+setxkbmap -layout gb -option ctrl:nocaps
 
 # The ssh-vault stuff
 SSH_VAULT_VM="ssh-vault"
 if [ "$SSH_VAULT_VM" != "" ]; then
        export SSH_AUTH_SOCK=/home/user/.SSH_AGENT_$SSH_VAULT_VM
 fi
+
+# Make sure sbin is in $PATH!
+export PATH=$PATH:/sbin:/usr/sbin
