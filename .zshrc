@@ -5,6 +5,7 @@ alias tmuxconf="vim ~/.tmux.conf" # then in tmux command line (ctrl-a :) source-
 alias nt="vim ~/Desktop/notes.txt"
 alias cs="vim ~/Desktop/cheat-sheet.txt"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
+alias catcp='function catCopy(){cat $1 | xclip -i -f -selection primary | xsel -i --clipboard}; catCopy'
 
 # Git aliases
 logLine="git log --graph --pretty=format:'%C(#ff69b4)%h%Creset %C(yellow)%d%Creset %s %C(#66cdaa) (%an: %cr)'"
