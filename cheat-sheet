@@ -1,0 +1,216 @@
+ MONAD SOURCES
+const Task = require('data.task') // Should upgrade to the new one! Same for next two!!
+const Maybe = require('data.maybe')
+const Either = require('data.either')
+const {compose, map, toUpper, reverse, replace, chain, tryCatch, __} = require('ramda') // etc
+//const {Map, List} = require('immutable')
+//const {Stream} = require('adtstream')
+const {State} = require('crocks')
+
+❍ GPG-zip
+gpg-zip [options] <a-filename> [<another-filename>...] <a-directory> [<another-directory...>]
+OPTIONS:
+-e encrypt
+-d decrypt
+-c encrypt w/ symmetric cypher & passphrase
+-s sign
+-r <user-name> recipient
+-u <user-name> use <user-name> as signer
+-o <file-name> output to <file-name>
+
+❍ Zip
+zip fileName.zip /path/to/folder/or/file [-r] [-e] [-db] (r for recursive, e for passsword, db to see bytes progress)
+unzip fileName.zip
+NOTE: Can open archives directly with Vim (vim /path/to/file) and you can then edit files directly IN the archive!
+It'll prompt for password if there is one! Amazing!
+
+❍ Curl
+curl -X POST -H "Content-Type: application/json" -d '{"stuff":in-json-format}' https://url.com/api-end-point
+
+❍ Haskell
+. (dot operator = func. composition)
+>>> (revers func. composition, ie pipe!)
+
+❍ Ranger
+S (open cwd in shell)
+:delete (deletes highlighted file/dir (requires confirmation!))
+:shell vim (open cwd in vim)
+ctrl-w (open cwd in vim)
+ctrl-r (rename file)
+space (select files for doing stuff too)
+yy (yank them)
+dd (cut them)
+pp (paste them)
+cw (rename)
+/ (search)
+
+❍ Tmux
+WINDOWS:
+prefix-l (Switch to last active panel)
+prefix-p (Previous window)
+prefix-n (Next window)
+prefix-& (Kill current window)
+prefix-, (Rename current window)
+prefix-c (New window)
+PANES:
+prefix-+ (Split pane vertical)
+prefix-- (Split pane horizontal)
+prefix-{ (Move current pane to next position)
+prefix-} (Move current pane to last position)
+prefix-! (Pop current pane into its own window!)
+prefix-q (Briefly number the panes)
+
+❍ Nerd Tree
+m brings options up to modifiy files in the tree directly
+ctrl-m-arrow move between nerd tree and open editor
+ctrl-w-p move to previous pane
+r refresh dir/tree
+u go up a dir
+CW drill into a dir
+
+❍ Vim
+J (NORMAL) join current line with next line (if no space desired use gJ)
+vi) (NORMAL) whilst on a word inside the ()'s, select all the stuff inside.
+/ <thing> Enter (VISUAL) jump to next <thing> in visual mode, highlighting all the way!
+I (NORMAL) jump to start of line and enter insert mode
+A (NORMAL) jump to end of line and enter insert mode
+<num>Enter (NORMAL) jump to line <number>
+yss<symbol> surround line with <symbol>
+ysib<symbol> surround string with <symbol>
+O (NORMAL) start newline ABOVE current cursor position and enter INSERT mode
+o (NORMAL) start newline UNDER current cursor position and enter INSERT mode
+yy<number> go to line <number>
+gc Toggle line being commented out
+daw (NORMAL) deletes word under cursor (delete a word)
+caw (NORMAL) deletes word under cursor and enters insert mode
+dd (NORMAL) delete line under the cursor
+ctrl-x ctrl-f (INSERT) autcomplete menu of file names in pwd OR from path you've already written!
+ctrl-n throws up autocomplete menu from stuff in the current buffer. Super handy! Use ctrl x before it to limit to current file.
+u (in normal mode) undoes things. Ctrl-r redoes them.
+:w !sudo tee % (write out current file using sudo)
+ctrl-d (reverse tab)
+. (redo last command)
+a (go to insert mode AFTER cursor!)
+gg (first line)
+9G (go to line 9)
+G (last line)
+H (top of screen)
+M (middle of screen)
+L (bottom of screen)
+{ (prev paragraph)
+} (next paragraph)
+% (next matching parens) 
+b (back one word)
+e (forward one word)
+* searches forward for next occurrance of whatever's under the cursor
+zt Keeps current cursor position but scrolls so it's at the top of the screen
+zz Keeps current cursor position but scrolls so it's at the centre of the screen
+zb Keeps current cursor position but scrolls so it's at the bottom of the screen.
+u (in normal mode! Undoes last command!)
+Note: Put numbers infront of things to move via that many jumps! eg 9j (go down 9 lines)
+/ (search forward)
+? (search backward)
+n (repeat search forward)
+N (repeat search backward)
+:%s/old/new/g (search for all old & replace with new)
+
+❍ Bash
+find . -type f -name file-starts-with\* -exec rm {} \; (removes all files starting with name in dir)
+aCommand > someFile (saves output of command into the textfile)
+cat > someFile (anything type afterwards until ctrl-d'd gets saved in someFile)
+cat >> someFile (anything type afterwards until ctrl-d'd gets appended in someFile)
+
+❍ Vim Macros:
+qa (record macro a)
+q (stop recording macro)
+@a (run macro a)
+
+❍ Vim Tabs:
+:tabnew or :tabnew file (open a file in a new tab)
+gt (move to next tab)
+gT (move to prev tab)
+#gt (move to tab #)
+:tabc (close current tab)
+
+If you've installed more plugins in the .vimrc, use this to install on cmd line:
+vim +PluginInstall +qall
+
+❍ LATEX
+1) write file and save as .tex
+2) pdflatex <filename.tex-here> (compiles to pdf)
+3) evince <filename.pdf-here> (to open)
+
+❍ Unicode
+ctrl+shift+u then type the numbers. They'll be underlined. When you hit enter, char appears.
+Note: in vim use ctrl+v then u before typing the following:
+∴ = 2234
+∵ = 2235
+❍ = 274d
+
+❍ GIT
+git fetch (fetches remote changes but doesn't merge, look at diffs via following)
+git log origin/<branch> ^<branch> (see commits origin/master has that master does not)
+git log <branch> ^origin/<branch> (see commits master has that origin/master does not)
+git rebase origin/<branch> (to put your work (or just working HEAD) back onto the tip of the branch)
+git grep -l '<find-this>' | xargs sed -i 's/<find-this>/<replace-with-this>/g' (Find and replace in a repo!)
+
+❍ Add new remote repo:
+git remote add origin <url-here>
+git remote set-url origin <url-here> (Replace a remote url)
+git remote set-url --add origin <url-here> (Add a second remote url)
+git remote -v (to verify it's working!)
+git push origin <branch-name> (to push to the new remote)
+git push --set-upstream origin master (to set it permanently)
+git push origin HEAD^1:<branch-name> (push all but the last commit up to given remote)
+git push origin <commit-hash>:<branch-name> (push all commits up to & including the given commit hash up to given remote)
+
+❍ Quickly add a slight change to previous commit w/out rebase/squash:
+git add <file-you-changed>
+git commit --ammend (prompts to change/keep prev. commit message.)
+
+❍ Sub modules: 
+git submodule update --recursive --remote
+git submodule foreach git pull origin master (update each submod to latest in turn)
+
+❍ Reset unpushed commit back to staging:
+git reset --soft HEAD~<num> (Reset to commit <num>< leaving changed files become staged)
+git reset --mixed HEAD~<num> (Reset to commit <num> changes become unstaged - default behaviour)
+git reset --hard HEAD~<num> (Reset to commit <num> deleting all changes)
+
+❍ Commit in the past
+git commit --date="10 day ago" -m "Your commit message" 
+
+❍ Rebase: 
+git rebase -i HEAD~<whichever head number you want!>
+
+❍ Staging
+git add all (adds all files to staging - I have aliased to gaa)
+git reset HEAD -- <file-name> (removes file from staging)
+
+❍ Tags
+git tag (show all tags)
+git tag -a <tag-name-here> -m '<tag-message-here>' (Add a tag to current commit)
+<as-above> <commit-hash> (Add a tag to a specific commit) 
+git push origin <tag-name> (push a specific tag to a remote - better than below cmd!)
+git push --tags (push tags to remote)
+git checkout <tag-name-here> (checkout a specific tag's commit)
+git push --delete origin <tag-name> Delete a tag from a remote repo
+git tag --delete <tag-name> Delete a tag from a local repo
+
+❍ Branches
+git branch (lists local branches)
+git branch -a (show all branches)
+git remote show origin (show all branches)
+git checkout <branch name> (switches to that branch)
+git branch -d <the-local-branch> (deletes a local branch)
+git push origin --delete <the-branch> (deletes a remote branch)
+git checkout --track origin/<branch-name> (creates a local branch tracking the name remote branch)
+
+❍ Stash:
+git stash save "message goes here"
+git stash save -u <message-here-no-quotes> (this includes the untracked files)
+git stash list (this to see what is stashed)
+git stash pop (applies latest stash into whatever dir you're in now & removes it from list)
+git stash apply (applies latest stash into whatever dir you're in now but doesn't remove from list)
+git stash drop (removes latest stash from list)
+git stash push -m 'stash message' <path> (save a specific file to a stash)
