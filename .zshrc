@@ -3,13 +3,14 @@ alias rr="ranger"
 alias vimrc="vim ~/.vimrc"
 alias tmuxconf="vim ~/.tmux.conf" # then in tmux command line (ctrl-a :) source-file ~/.tmux.conf"
 alias nt="vim ~/Desktop/notes.txt"
-alias cs="vim ~/Desktop/cheat-sheet.txt"
+alias cs="vim ~/Desktop/cheat-sheet"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias catcp='function catCopy(){cat $1 | xclip -i -f -selection primary | xsel -i --clipboard}; catCopy'
 alias echocp='function echoCopy(){echo $1 | xclip -i -f -selection primary | xsel -i --clipboard}; echoCopy'
 alias therefore="echocp ∴"
 alias because="echocp ∵"
 alias interrobang="echocp ‽"
+alias todo="~/Desktop/todo"
 
 # Git aliases
 logLine="git log --graph --pretty=format:'%C(#ff69b4)%h%Creset %C(yellow)%d%Creset %s %C(#66cdaa) (%an: %cr)'"
@@ -48,17 +49,18 @@ export PYTHONPATH=/home/gregkapka/.local/lib/python2.7/site-packages
 export VISUAL=vim
 export EDITOR=vim
 
-# Source the NVM stuff
-source ~/.nvm/nvm.sh
+# Source my profile
+source ~/.profile
 
 # Set keyboard to UK
 setxkbmap -layout gb -option ctrl:nocaps
 
-# The ssh-vault stuff
-SSH_VAULT_VM="ssh-vault"
-if [ "$SSH_VAULT_VM" != "" ]; then
-       export SSH_AUTH_SOCK=/home/user/.SSH_AGENT_$SSH_VAULT_VM
-fi
-
 # Make sure sbin is in $PATH!
 export PATH=$PATH:/sbin:/usr/sbin
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Source the NVM stuff
+source ~/.nvm/nvm.sh
+
+# Add rust binaries to path
+export PATH=$PATH:/home/user/.cargo/bin
