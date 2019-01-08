@@ -10,7 +10,9 @@ alias echocp='function echoCopy(){echo $1 | xclip -i -f -selection primary | xse
 alias therefore="echocp ∴"
 alias because="echocp ∵"
 alias interrobang="echocp ‽"
-alias todo="~/Desktop/todo"
+todo="~/Desktop/todo"
+alias todo="cat $todo"
+alias addtodo="cat >> $todo"
 
 # Git aliases
 logLine="git log --graph --pretty=format:'%C(#ff69b4)%h%Creset %C(yellow)%d%Creset %s %C(#66cdaa) (%an: %cr)'"
