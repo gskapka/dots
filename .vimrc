@@ -113,9 +113,6 @@ let NERDTreeShowHidden=1
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " Auto commenter
 Plugin 'scrooloose/nerdcommenter'
 " Buffer management - over ctrl c to kill current buffer!

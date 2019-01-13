@@ -1,18 +1,22 @@
+# Run tmux anytime z-shell starts
+[ -z "$TMUX" ] && { tmux attach || exec tmux new-session ranger && exit; }
+
 # Aliases
 alias rr="ranger"
 alias vimrc="vim ~/.vimrc"
 alias tmuxconf="vim ~/.tmux.conf" # then in tmux command line (ctrl-a :) source-file ~/.tmux.conf"
-alias nt="vim ~/Desktop/notes.txt"
 alias cs="vim ~/Desktop/cheat-sheet"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
-alias catcp='function catCopy(){cat $1 | xclip -i -f -selection primary | xsel -i --clipboard}; catCopy'
 alias echocp='function echoCopy(){echo $1 | xclip -i -f -selection primary | xsel -i --clipboard}; echoCopy'
 alias therefore="echocp ∴"
 alias because="echocp ∵"
 alias interrobang="echocp ‽"
 todo="~/Desktop/todo"
-alias todo="cat $todo"
-alias addtodo="cat >> $todo"
+note="~/Desktop/notes"
+alias todos="cat $todo"
+alias notes="cat $notes"
+alias todo="cat >> $todo"
+alias note="cat >> $notes"
 
 # Git aliases
 logLine="git log --graph --pretty=format:'%C(#ff69b4)%h%Creset %C(yellow)%d%Creset %s %C(#66cdaa) (%an: %cr)'"
