@@ -17,6 +17,8 @@ alias todos="cat $todo"
 alias notes="cat $notes"
 alias todo="cat >> $todo"
 alias note="cat >> $notes"
+alias edittodos="vim $todo"
+alias editnotes="vim $notes"
 
 # Git aliases
 logLine="git log --graph --pretty=format:'%C(#ff69b4)%h%Creset %C(yellow)%d%Creset %s %C(#66cdaa) (%an: %cr)'"
