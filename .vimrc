@@ -55,7 +55,7 @@ inoremap <Right> <Nop>
 
 " Allow for leaving a buffer without writings its contents
 :set hidden
-:nnoremap <CTRL-c> :bp\|bd #<CR>
+:nnoremap <C-c> :bd<CR>
 
 " Set JS file to have 2 spaces as a tab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
