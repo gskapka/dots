@@ -1,4 +1,9 @@
+" Always display file path at bottom of buffer
+set laststatus=2
+set statusline+=%F
+
 " Default to tree view in netrw
+let g:netrw_banner=0
 let g:netrw_liststyle=3
 
 " Vundle requirement
@@ -9,6 +14,7 @@ vnoremap // y/<C-R>"<CR>
 
 " Auto strip trailing whitepsace from given filetypes!
 autocmd BufWritePre *.js %s/\s\+$//e
+autocmd BufWritePre *.md %s/\s\+$//e
 autocmd BufWritePre *.sol %s/\s\+$//e
 
 " Set a column width indicator
@@ -19,6 +25,9 @@ set cursorline
 
 " Buffer will scroll withing 5 lines of top || bottom of screen
 set scrolloff=5
+
+" Case insensitive searching
+set ignorecase
 
 " Have searches end up in centre of screen
 :nnoremap n nzz
@@ -47,7 +56,7 @@ inoremap <Right> <Nop>
 " Map enter to G so we can go to lines quickly
 :nnoremap <CR> G
 
-" Set highlight searching on 
+" Set highlight searching on
 :set hlsearch
 
 " Cycle through open buffers with tab
@@ -87,7 +96,7 @@ Plugin 'dracula/vim', { 'as': 'dracula' }
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 "Add syntax-highlighting for github markdown
-Bundle 'gabrielelana/vim-markdown' 
+Bundle 'gabrielelana/vim-markdown'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
